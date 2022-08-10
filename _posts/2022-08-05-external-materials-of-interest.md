@@ -1,5 +1,5 @@
 ---
-title: Externel Materials of Interest
+title: External Materials of Interest
 description: Extra materials from the internet that might broaden machine learning knowledge and exposure. 
 toc: true
 layout: post
