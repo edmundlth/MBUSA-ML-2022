@@ -6,7 +6,6 @@ layout: post
 categories: [extra, machine-learning]
 comments: true
 ---
-(UNDER CONSTRUCTION!!)
 - Fastai lectures: [Lecture 6 about decision trees and random forests](https://www.youtube.com/watch?v=AdhG64NF76E&list=PLfYUBJiXbdtSvpQjSnJJ_PmDQB_VyT5iU&index=6)
 - [explained.ai](http://explained.ai)
     - Statistics vs ML terms: [https://explained.ai/statspeak/index.html](https://explained.ai/statspeak/index.html)
