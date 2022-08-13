@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://edmundlth.github.io/MBUSA-ML-2022/jupyter/2020/02/20/test.html</loc>
-<lastmod>2020-02-20T00:00:00-06:00</lastmod>
-</url>
-<url>
-<loc>https://edmundlth.github.io/MBUSA-ML-2022/machine-learning/workshop/2022/08/03/week1-worksheet.html</loc>
+<loc>https://edmundlth.github.io/MBUSA-ML-2022/pen-and-paper/machine-learning/2022/08/03/week1-written-notes.html</loc>
 <lastmod>2022-08-03T00:00:00-05:00</lastmod>
 </url>
 <url>
@@ -15,6 +11,10 @@
 <url>
 <loc>https://edmundlth.github.io/MBUSA-ML-2022/questions/machine-learning/cross-validation/2022/08/05/week1-q-and-a.html</loc>
 <lastmod>2022-08-05T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>https://edmundlth.github.io/MBUSA-ML-2022/questions/machine-learning/cross-validation/2022/08/10/week2-q-and-a.html</loc>
+<lastmod>2022-08-10T00:00:00-05:00</lastmod>
 </url>
 <url>
 <loc>https://edmundlth.github.io/MBUSA-ML-2022/machine-learning/workshop/decision-tree/random-forest/information-theory/2022/08/10/week2-worksheet.html</loc>
