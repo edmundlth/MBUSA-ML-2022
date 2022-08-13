@@ -1,6 +1,6 @@
 ---
-title: Week 2 Written Exercise
-description: Solution to written exercises for week 2 with discussions and comments. 
+title: Week 2 Written Notes and Exercise Solutions
+description: Solutions and discussions to written exercises for week 2 with discussions and comments. 
 toc: true
 layout: post
 categories: [pen-and-paper, machine-learning]
