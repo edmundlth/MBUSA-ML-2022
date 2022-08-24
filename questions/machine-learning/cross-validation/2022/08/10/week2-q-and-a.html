@@ -95,7 +95,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      10 min read
+      11 min read
     
 </span></p>
 
@@ -118,6 +118,7 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#demo-implementation-of-how-to-do-sampling-with-replacement-using-different-probability-density">Demo implementation of how to do sampling with replacement using different probability density</a></li>
 </ul><ol>
   <li>
     <p><strong>In terms of hyperparameters, I think you mentioned that X=(X1, X2, …) is part of hyperparameters. Does this mean the train-test split is part of the hyperparameter?</strong></p>
@@ -171,6 +172,55 @@ window.onload = wrap_img;
   </li>
 </ol>
 
+<h1 id="demo-implementation-of-how-to-do-sampling-with-replacement-using-different-probability-density">
+<a class="anchor" href="#demo-implementation-of-how-to-do-sampling-with-replacement-using-different-probability-density" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo implementation of how to do sampling with replacement using different probability density</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="k">def</span> <span class="nf">sample_one</span><span class="p">(</span><span class="n">probabilities</span><span class="p">):</span>
+    <span class="s">"""
+    Generate a single sample with probability density specified by
+      `probabilities = [p1, p2, ..., pN]`
+    We will return an index `i` between 0 and N-1 inclusive.
+    """</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">probabilities</span><span class="p">)</span> <span class="c1"># just checking this is an honest probability density
+</span>    
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">probabilities</span><span class="p">)</span> <span class="c1"># size of the sample space
+</span>    <span class="n">cummulative_density</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">probabilities</span><span class="p">)</span> <span class="c1"># compute CDF
+</span>    <span class="n">cummulative_density</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cummulative_density</span><span class="p">])</span> <span class="c1"># prepend 0 to the list
+</span>    <span class="n">random_seed</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">()</span> <span class="c1"># generate a single random number between 0 and 1 uniformly.
+</span>    
+    <span class="c1"># Look for the index i such that CDF[i -1] &lt;= random_seed &lt;= CDF[i]
+</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">cummulative_density</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">random_seed</span> <span class="o">&lt;=</span> <span class="n">cummulative_density</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">i</span> <span class="c1"># break and return when found
+</span>    <span class="c1">#return N -1 # if loop complete it must have fall on the last interval
+</span>
+
+<span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">probabilities</span><span class="p">):</span>
+    <span class="s">"""For pedagogy only. Inefficient implementation"""</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">sample_one</span><span class="p">(</span><span class="n">probabilities</span><span class="p">)</span>
+        <span class="n">samples</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">samples</span>
+
+
+<span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">]</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">probabilities</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Empirical probabilities:"</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">unique</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span>  <span class="n">return_counts</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">unique</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span>  <span class="n">return_counts</span><span class="o">=</span><span class="bp">True</span><span class="p">)):</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Probability of oberving </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s"> = </span><span class="si">{</span><span class="n">b</span> <span class="o">/</span> <span class="n">num_samples</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="n">Empirical</span> <span class="n">probabilities</span><span class="p">:</span>
+<span class="n">Probability</span> <span class="n">of</span> <span class="n">oberving</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">0.1208</span>
+<span class="n">Probability</span> <span class="n">of</span> <span class="n">oberving</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">0.1248</span>
+<span class="n">Probability</span> <span class="n">of</span> <span class="n">oberving</span> <span class="n">c</span> <span class="o">=</span> <span class="mf">0.505</span>
+<span class="n">Probability</span> <span class="n">of</span> <span class="n">oberving</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">0.2494</span>
+</code></pre></div></div>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"

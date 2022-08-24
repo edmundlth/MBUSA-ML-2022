@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Q&amp;A (Week 3) | MBUSA Machine Learning Module 2022</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Q&amp;A (Week 3)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Q&amp;A for materials in week 3. SVM related." />
+<meta property="og:description" content="Q&amp;A for materials in week 3. SVM related." />
+<link rel="canonical" href="https://edmundlth.github.io/MBUSA-ML-2022/questions/machine-learning/support-vector-machine/2022/08/17/week3-q-and-a.html" />
+<meta property="og:url" content="https://edmundlth.github.io/MBUSA-ML-2022/questions/machine-learning/support-vector-machine/2022/08/17/week3-q-and-a.html" />
+<meta property="og:site_name" content="MBUSA Machine Learning Module 2022" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-08-17T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Q&amp;A (Week 3)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-08-17T00:00:00-05:00","datePublished":"2022-08-17T00:00:00-05:00","description":"Q&amp;A for materials in week 3. SVM related.","headline":"Q&amp;A (Week 3)","mainEntityOfPage":{"@type":"WebPage","@id":"https://edmundlth.github.io/MBUSA-ML-2022/questions/machine-learning/support-vector-machine/2022/08/17/week3-q-and-a.html"},"url":"https://edmundlth.github.io/MBUSA-ML-2022/questions/machine-learning/support-vector-machine/2022/08/17/week3-q-and-a.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/MBUSA-ML-2022/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://edmundlth.github.io/MBUSA-ML-2022/feed.xml" title="MBUSA Machine Learning Module 2022" /><link rel="shortcut icon" type="image/x-icon" href="/MBUSA-ML-2022/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/MBUSA-ML-2022/">MBUSA Machine Learning Module 2022</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/MBUSA-ML-2022/about/">About</a><a class="page-link" href="/MBUSA-ML-2022/search/">Search</a><a class="page-link" href="/MBUSA-ML-2022/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Q&amp;A (Week 3)</h1><p class="page-description">Q&A for materials in week 3. SVM related.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-08-17T00:00:00-05:00" itemprop="datePublished">
+        Aug 17, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/MBUSA-ML-2022/categories/#questions">questions</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/MBUSA-ML-2022/categories/#machine-learning">machine-learning</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/MBUSA-ML-2022/categories/#support-vector-machine">support-vector-machine</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+</ul><ol>
+  <li>
+    <p>Under the Hard margin SVM objective, it says “parameter b is optimised indirectly by influencing constraints”. Is this “optimisation of parameter b” referring to separation hyperplane or regularisation?</p>
+
+    <p>Both w​ and b​ are parameters of SVM model (we need both to specify a hyperplane) and training SVM means finding a good set of (w, b)​ such that some objective function is maximised under some constraints. In hard margin SVM, that means maximise margin subject to the constraints of no misclassification. It turns out that the “maximise margin” part can be expressed purely in terms of w​, and b​ only comes into making sure that the “no misclassification” constraint is satisfied.</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>I know the slides uses the word “regularisation” in describing the objective of SVM, but I think that is a little confusing. Just think of the 1/</td>
+          <td>w</td>
+          <td>term as an objective function to measure how well a particular choice of (w, b)​ performs for a given training data.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>Also under the Hard margin SVM objective, what is the “data” here when it says “data-independent regularisation term”? 
+I thought the data was training data, but then I think $1/||w||$ is related to training data, since scaling changes (yi*(wxi+b)). I am confused about why it is considered a “data-independent regularisation term” after scaling the closest distance to 1/||w||.</p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>That slide is just trying to express the fact that once the constraints is satisfied , maximising the 1/</td>
+          <td>w</td>
+          <td>objective no longer cares about training data. It is the constraints of “no misclassification” that depends on the training data. So the training process can be thought of (not actual implementation though) as first using training data to find all (w, b)​ that satisfies the y_i (w x_i + b) &gt;= 1​ constraints and then find the smallest</td>
+          <td>w</td>
+          <td>in that set.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>Under the Lagrange duality, where does lambda comes from w, and how it got to the model here.</p>
+
+    <p>This is indeed a whole topic on its own. I think this <a href="https://www-cs.stanford.edu/people/davidknowles/lagrangian_duality.pdf">article</a> explains the origin of the dual variable fairly well. You might want to go through the first section carefully and simultaneously having some  easy example in your mind. E.g. try to go through the article with the following optimisation problem:</p>
+
+    <p>minimise x^2 subject to -x + 3 &lt;= 0</p>
+
+    <p>As you mentioned, this might be a little out of scope of this subject.</p>
+  </li>
+  <li>
+    <p>In the Kernel example, what does the transformation in the last line of the calculation mean?</p>
+
+    <p>Notice that it is a function that takes the feature vector (x_1, x_2) with only 2 dimensions and  produce another vector with 6 dimensions which includes a (scaled) copy of the original (x1, x2) component but also other quadratic components. In practice, this means we transform our original dataframe with 2 columns into a new dataframe with 6 columns and  it is this new dataframe that we feed into SVM so that SVM can do linear​​ separation in this larger 6 dimensional space.</p>
+
+    <p>But we can do away with actually computing this new dataframe and feeding a much larger dataframe into SVM by using kernel​​. The observation is that we only ever need to compute dot product of the new 6-dimensional vector, not the vectors themselves. And we observe in this calculation that calculating the dot product in transformed space is the same as evaluating the kernel in the original space, which is much cheaper.</p>
+  </li>
+  <li>
+    <p>What is an infinite dimensional vector space?</p>
+
+    <p>It is what it says it is, a vector space with infinite dimension. To make sense of this you would need to know that definition of vector spaces and their dimension. Roughly, a (real) vector space is any set of things that you know how to add, and you know how to scale with a real number. The dimension of the vector space is the number of “coordinates” needed to specify a vector in this set. 2-tuples forms a 2D vector space, 3-tuples forms 3D etc.. You can perhaps imagine an infinite list of numbers forming infinite dimensional space (ask yourself: do you know how to add two such lists? do you know how to scale one such list by a real number? If so, then you likely have a vector space).</p>
+
+    <p>A non-trivial example relevant to things we discussed is that any (sufficiently nice) function can be expressed by their Taylor series $f(x) = a_0 + a_1 x + a_2 x^2 + \dots$</p>
+
+    <p>You can think of this as using an infinite list of numbers $(a_0, a_1, a_2, \dots)$ to specify a function. For example, the list $(1, 2, 1, 0, 0, 0, …)$ specify the function that computes $f(x) = 1 + 2x + x^2$. And to specify all such functions, you do need an infinite list, so this is vector space is infinite dimensional..</p>
+
+    <p>I am skipping over lots of details here, but this is mostly covered in any linear algebra course / book.</p>
+  </li>
+</ol>
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="edmundlth/MBUSA-ML-2022"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/MBUSA-ML-2022/questions/machine-learning/support-vector-machine/2022/08/17/week3-q-and-a.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/MBUSA-ML-2022/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/MBUSA-ML-2022/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/MBUSA-ML-2022/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Extra materials for Machine Learning module for Business Analytics students at Melbourne Business School.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/edmundlth" target="_blank" title="edmundlth"><svg class="svg-icon grey"><use xlink:href="/MBUSA-ML-2022/assets/minima-social-icons.svg#github"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
