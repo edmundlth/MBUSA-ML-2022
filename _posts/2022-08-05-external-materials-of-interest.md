@@ -13,3 +13,11 @@ comments: true
 - Dall-E 2 prompt book: https://pitch.com/v/DALL-E-prompt-book-v1-tmd33y
 - Craiyon: https://www.craiyon.com/
 - Essay by Leo Breiman (you might know him for the Bagging meta-learning technique): [Statistical Modelling: The Two Cultures](http://www2.math.uu.se/~thulin/mm/breiman.pdf)
+- Introducing neural network: 
+> youtube: https://youtu.be/aircAruvnKk
+- Gradient descent: 
+> youtube: https://youtu.be/IHZwWFHWa-w
+- Backpropagation to effectively calculate gradient: 
+> youtube: https://youtu.be/Ilg3gGewQ5U
+- Details about backpropagation: 
+> youtube: https://youtu.be/tIeHLnjs5U8
