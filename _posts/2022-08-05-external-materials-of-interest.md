@@ -10,6 +10,14 @@ comments: true
 - [explained.ai](http://explained.ai)
     - Statistics vs ML terms: [https://explained.ai/statspeak/index.html](https://explained.ai/statspeak/index.html)
     - Gradient boosting: [https://explained.ai/gradient-boosting/](https://explained.ai/gradient-boosting/)
-- Dall-E 2 prompt book: https://pitch.com/v/DALL-E-prompt-book-v1-tmd33y
+- Bagging vs Boosting on Kaggle [https://www.kaggle.com/code/prashant111/bagging-vs-boosting/notebook](https://www.kaggle.com/code/prashant111/bagging-vs-boosting/notebook)
 - Craiyon: https://www.craiyon.com/
 - Essay by Leo Breiman (you might know him for the Bagging meta-learning technique): [Statistical Modelling: The Two Cultures](http://www2.math.uu.se/~thulin/mm/breiman.pdf)
+- Introducing neural network: 
+> youtube: https://youtu.be/aircAruvnKk
+- Gradient descent: 
+> youtube: https://youtu.be/IHZwWFHWa-w
+- Backpropagation to effectively calculate gradient: 
+> youtube: https://youtu.be/Ilg3gGewQ5U
+- Details about backpropagation: 
+> youtube: https://youtu.be/tIeHLnjs5U8
